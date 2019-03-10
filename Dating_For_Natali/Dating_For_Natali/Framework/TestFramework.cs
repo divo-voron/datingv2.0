@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Linq;
+using System.Reflection;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
@@ -12,7 +13,7 @@ namespace SeleniumTests
         static RemoteWebDriver _WebDriver;
         private static readonly string pathToFirefox = ConfigurationManager.AppSettings["PathToFireFox"];
         private static readonly string nameOfDriver = ConfigurationManager.AppSettings["NameOfDriver"];
-        private static readonly string pathToDriver = ConfigurationManager.AppSettings["PathToDriver"];
+        private static readonly string pathToDriver = Environment.CurrentDirectory;
 
         public static RemoteWebDriver WebDriver
         {
@@ -21,13 +22,13 @@ namespace SeleniumTests
                 if (_WebDriver == null)
                 {
                     FirefoxDriverService service;
-                    if (!string.IsNullOrEmpty(nameOfDriver) && !string.IsNullOrEmpty(pathToDriver))
+                    if (!string.IsNullOrEmpty(nameOfDriver))
                     {
                         service = FirefoxDriverService.CreateDefaultService(pathToDriver, nameOfDriver);
                     }
                     else
                     {
-                        service = FirefoxDriverService.CreateDefaultService(@"C:\inetpub", "geckodriver.exe");
+                        throw new ConfigurationErrorsException("Check config setting 'NameOfDriver'");
                     }
                     var profile = new FirefoxProfile();
                     profile.SetPreference("security.sandbox.content.level", 5);
