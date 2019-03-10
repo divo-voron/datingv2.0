@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Configuration;
 using System.Linq;
-using System.Reflection;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
