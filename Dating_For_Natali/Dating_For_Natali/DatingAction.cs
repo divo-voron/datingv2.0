@@ -36,8 +36,8 @@ namespace Dating_For_Natali
         public void ParseProfile()
         {
             // TODO:
-            // 1. Parse profile
-            // 2. Retrieve city info
+            // 1. Parse profile. 
+            // 2. Retrieve city info. You can use GetValue() method.
             // 3. Validate by city
         }
     }
