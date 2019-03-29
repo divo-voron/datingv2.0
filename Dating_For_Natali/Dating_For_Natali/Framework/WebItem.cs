@@ -48,6 +48,11 @@ namespace SeleniumTests
             return TestFramework.FindWebElement(this).FindElements(value);
         }
 
+        public string GetText()
+        {
+            return TestFramework.FindWebElement(this).Text;
+        }
+
         public bool IsEnabled()
         {
             return TestFramework.FindWebElement(this).Enabled;

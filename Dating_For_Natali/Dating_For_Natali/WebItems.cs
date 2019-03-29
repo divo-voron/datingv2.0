@@ -50,5 +50,38 @@ namespace Dating_For_Natali
                 };
             }
         }
+
+        public static WebItem PersonName
+        {
+            get
+            {
+                return new WebItem()
+                {
+                    ClassName = "js-profile-header-name"
+                };
+            }
+        }
+
+        public static WebItem PersonLocation
+        {
+            get
+            {
+                return new WebItem()
+                {
+                    ClassName = "js-location-label"
+                };
+            }
+        }
+
+        public static WebItem CountOfInterests
+        {
+            get
+            {
+                return new WebItem()
+                {
+                    ClassName = "js-interests-board"
+                };
+            }
+        }
     }
 }

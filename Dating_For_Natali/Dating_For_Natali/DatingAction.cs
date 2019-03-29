@@ -18,8 +18,8 @@ namespace Dating_For_Natali
 
             TestFramework.Delay(2);
 
-            var login = ConfigurationManager.AppSettings["login"];
-            var password = ConfigurationManager.AppSettings["password"];
+            string login = ConfigurationManager.AppSettings["login"];
+            string password = ConfigurationManager.AppSettings["password"];
 
             if (!string.IsNullOrWhiteSpace(login) && !string.IsNullOrWhiteSpace(password))
             {
@@ -35,6 +35,16 @@ namespace Dating_For_Natali
 
         public void ParseProfile()
         {
+            WebItems.PersonName.Click();
+            string location = WebItems.PersonLocation.GetText();
+            string configLocation = ConfigurationManager.AppSettings["Location"];
+            bool flag = location.Contains(configLocation);
+
+            string interest = WebItems.CountOfInterests.GetText();
+
+            int countOfInterests;
+            bool successed = int.TryParse(interest, out countOfInterests);
+
             // TODO:
             // 1. Parse profile. 
             // 2. Retrieve city info. You can use GetValue() method.
